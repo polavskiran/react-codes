@@ -1,0 +1,169 @@
+span{
+    color: black;
+    font-size: 14px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    size: 100px;
+}
+
+input {
+    color: black;
+    font-size: 12px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    /*width: 25%;*/
+}
+
+.divform {
+    width: 25%;
+    border: 2px solid green;
+    align-items: center;
+}
+
+.center {
+    margin: auto;
+    /*border: 2px solid green;*/
+    width: 50%;
+    padding: 10px;
+    alignment: center;
+}
+
+button {
+    margin: 5px;
+    border: 2px solid darkcyan;
+    flex-flow: column;
+    background-color: #4CAF50;
+    font-style: inherit;
+    font-size: 14px;
+    color: white;
+    padding: 12px 35px;
+    cursor: pointer;
+    border-radius: 80%;
+}
+
+img{
+    width: 150px;
+    height: 150px;
+    float: start;
+}
+
+.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+#enrollCourse{
+    border-radius: 5px;
+    text-wrap: none;
+    size: A4;
+}
+
+.image{
+    width: 50em;
+    height: 30em;
+    padding: 20px 0px 15px 15px;
+    background-color:green;
+}
+
+.divblock{
+    display: block;
+    box-sizing: border-box;
+    margin: 10px;
+    padding: 1px;
+}
+
+.course-card--container{
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    width: 850px;
+}
+
+.course-card--medium{
+    flex-direction: column;
+    max-width: 37.5rem;
+    min-width: 17.3rem;
+}
+
+.course-card--main-content{
+    min-width: .2rem;
+    scroll-snap-align: start;
+}
+
+.carousel--grid--35Xll{
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 1.6rem;
+}
+
+.course-unit--grid{
+    grid-auto-columns: calc((100% - (5 - 1) * 1.6rem)/5);
+}
+
+.carousel--scroll-port{
+    overflow: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-snap-stop: always;
+    touch-action: manipulation;
+    max-width: 1200px;
+}
+
+.carousel--grid{
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 1.6rem;
+}
+
+.carousel--scroll-lock{
+    /*overflow-x: hidden;*/
+}
+
+.box {
+    padding: 5px;
+    text-align: justify;
+    margin-left: 8px;
+}
+
+.text--box {
+    padding: 5px;
+    text-align: left;
+    margin-bottom: 8px;
+    display: block;
+}
+
+ul {
+    text-align: left;
+    /*padding-left: 10%;
+    padding: 7%;*/
+    font-size: medium;
+    list-style: disc;
+}
+
+/*li:hover{
+  color:red;
+  margin: 4%;
+  transition: 1.5s ease;
+  cursor: pointer;
+}*/
+
+#btnNextNew{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(100%, -100%);
+    /*-ms-transform: translate(-50%, -50%);*/
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.dotted-Text {
+    display: block;
+    white-space: nowrap;
+    width: 15em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
