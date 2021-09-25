@@ -36,13 +36,20 @@ button {
     color: white;
     padding: 12px 35px;
     cursor: pointer;
-    border-radius: 80%;
+    border-radius: 10px;
 }
 
 img{
     width: 150px;
     height: 150px;
     float: start;
+    position: center;
+}
+
+.courseImg{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .disabled {
@@ -75,6 +82,13 @@ img{
     align-items: flex-start;
     position: relative;
     width: 850px;
+}
+
+.next-prev{
+    display: block;
+    position: center;
+    padding: 10px;
+    max-width: 350px;
 }
 
 .course-card--medium{
@@ -121,6 +135,8 @@ img{
     padding: 5px;
     text-align: justify;
     margin-left: 8px;
+    border: 1px solid black;
+    min-width: 100px;
 }
 
 .text--box {
@@ -132,10 +148,16 @@ img{
 
 ul {
     text-align: left;
-    /*padding-left: 10%;
-    padding: 7%;*/
-    font-size: medium;
-    list-style: disc;
+    padding: 25px;
+    font-size: 14px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+ol {
+    text-align: left;
+    padding: 25px;
+    font-size: 14px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 /*li:hover{
@@ -167,3 +189,93 @@ ul {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.descBox{
+    width: 300px;
+    height: 300px;
+    border: 1px solid blue;
+    display: flex;
+    padding: 12px 24px;
+    border-radius: 25px;
+    grid-auto-flow: column;
+    grid-gap: 1.6rem;
+}
+
+.descText{
+    text-align: -webkit-left;
+}
+
+ol.c {
+    list-style-type: upper-roman;
+    text-align: justify;
+}
+
+.course-desc{
+    text-align: left;
+    padding: 10px;
+    font-size: 14px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.curriculum--content-length{
+    margin: .8rem 0;
+    display: block;
+    text-align: center;
+    padding: 15px;
+}
+
+.udlite-text-sm{
+    font-family: sf pro text,-apple-system,BlinkMacSystemFont,Roboto,segoe ui,Helvetica,Arial,sans-serif,apple color emoji,segoe ui emoji,segoe ui symbol;
+    font-weight: 400;
+    line-height: 1.4;
+    font-size: 1.4rem;
+    text-align: center;
+    padding: 20px;
+    border: 50%;
+    border-radius: 1px solid green;
+}
+
+.accordion-panel-title{
+    display: block;
+    flex: 1;
+    font-size: 14px;
+    text-align: justify;
+}
+
+.vertical {
+    border-left: 2px solid black;
+    height: 1200px;
+    position:absolute;
+    left: 50%;
+}
+
+.split {
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+  
+  .left {
+    left: 0;
+  }
+  
+  .right {
+    right: 0;
+  }
+  
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-30%, -50%);
+    text-align: center;
+  }
+  
+  .centered img {
+    width: 150px;
+    border-radius: 1%;
+  }
