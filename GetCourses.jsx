@@ -1,7 +1,8 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import axios from "axios";
-import CourseDetails from "./CourseDetails";
 import './courses.css';
+import {BrowserRouter as Router, Route, Link, Switch, useHistory} from "react-router-dom";
+import CourseDetails from "./CourseDetails";
 
 function GetCourses() {
 
@@ -10,8 +11,11 @@ function GetCourses() {
     const [cardData, setCardData] = useState([]);
     const [disabledNext,setDisabledNext] = useState(false);
     const [disabledPrev,setDisabledPrev] = useState(true);
+    const [show,setShow] = useState(false);
+    const history = useHistory();
 
-    const url = 'https://jsonplaceholder.typicode.com/photos';
+    const url = 'http://10.208.66.112:8080/courses';
+    const photo = 'https://via.placeholder.com/150/92c952';
 
     // fires on component mounted and component updated.
     useEffect(() => {
@@ -35,17 +39,12 @@ function GetCourses() {
     const allCardData = async () => {
         const  resp = await axios.get(url);
         setCardData(resp.data);
-        //console.log(resp);
     }
 
-    // console.log("Current Prev Value: "+prevCount+", Current Next Value: "+nextCount);
     let currentPrevCount = prevCount;
     let currentNextCount = nextCount;
 
     const showNextGridData = (e) => {
-        //console.log("showNextGridData");
-        //console.log("Prev Value: "+prevCount+", Next Value: "+nextCount);
-
         if(nextCount < cardData.length){
 
             setNextCount(currentNextCount+5);
@@ -60,9 +59,6 @@ function GetCourses() {
     }
 
     const showPrevGridData = (e) => {
-        //console.log("showPrevGridData");
-        //console.log("Prev Value: "+prevCount+", Next Value: "+nextCount);
-
         if(currentPrevCount > 0 || currentPrevCount >= cardData.length){
 
             setNextCount(currentNextCount-5);
@@ -76,25 +72,61 @@ function GetCourses() {
         }
     }
 
-    const renderCard = (person) => {
+    function showModel(e){
+        console.log("In Model Method");
+        e.preventDefault();
+        let show = true;
+        return(
+            <CourseDetails showModel={show} />
+        );
+    }
+
+    function showBox(){
+        setShow(true);
+        console.log("Model "+show);
+    }
+
+    const renderCard = (course, index) => {
+        let courseId = course.course_id;
+        let courseName = course.course_name;
+        let course_desc = course.course_description;
 
         return(
             <>
                 {
-                    <div key={person.id} data-source={person.id}>
-                        <a href="" style={{display: "block"}} onClick={<CourseDetails />}>
+                    <div key={courseId} data-source={courseId}>
+                        {/*return history.push(`/pages/${courseName}`);*/}
+
+                        <a href={`/${courseName}/${courseId}`}>
                             <div id="image" className="box">
-                                <img src={person.thumbnailUrl} alt="Imagem do Portfolio"/>
+                                <img src={process.env.PUBLIC_URL +`/images/${courseName}.png`} alt="Course Image" />
                             </div>
                             <div className="text--box">
-                                <DottedText text={person.title} />
-                            </div>
-                            <div className="text--box">
-                                <span>
-                                    Book Id: {person.id}
-                                </span>
+                            <span>
+                                {courseName}
+                            </span>
                             </div>
                         </a>
+
+                        {/*<Router>*/}
+                        {/*    <Link to={`/pages/${courseName}`}>*/}
+                        {/*        <div id="image" className="box">*/}
+                        {/*            <img src={process.env.PUBLIC_URL +`/images/${courseName}.png`} alt="Course Image" />*/}
+                        {/*        </div>*/}
+                        {/*        <div className="text--box">*/}
+                        {/*        <span>*/}
+                        {/*            {courseName}*/}
+                        {/*        </span>*/}
+                        {/*        </div>*/}
+                        {/*    </Link>*/}
+
+                        {/*    <Switch>*/}
+                        {/*        <Route path="/pages/Java" component={JavaCourseDetails} />*/}
+                        {/*        <Route path="/pages/Python" component={PythonCourseDetails}/>*/}
+                        {/*        <Route path="/pages/Groovy" component={GroovyCourseDetails}/>*/}
+                        {/*        <Route path="/pages/Hello" component={Hello}/>*/}
+                        {/*    </Switch>*/}
+                        {/*</Router>*/}
                     </div>
                 }
             </>
@@ -115,7 +147,9 @@ function GetCourses() {
 
     function DottedText(props){
         let maxLength = 20;
-        if(props.text.length > maxLength){
+        let textLength = props.text.length;
+
+        if(textLength != 0 && textLength > maxLength){
             return(
                 <>
                     <span className="dotted-Text text--box">{props.text}</span>
@@ -140,13 +174,10 @@ function GetCourses() {
                         }
                     </div>
                 </div>
-                <div className="course-card--container">
-                    {/* <button type="submit" id="btnPrevious" onClick={showPrevGridData}>Previous</button>
-                    <button type="submit" id="btnNext" onClick={showNextGridData}>Next</button> */}
-
-                    <ButtonPrev toggle={(e) => showPrevGridData(e)} active={disabledPrev} />
-                    <ButtonNext toggle={(e) => showNextGridData(e)} active={disabledNext} />
-                </div>
+                {/*<div className="next-prev">*/}
+                {/*    <ButtonPrev toggle={(e) => showPrevGridData(e)} active={disabledPrev} />*/}
+                {/*    <ButtonNext toggle={(e) => showNextGridData(e)} active={disabledNext} />*/}
+                {/*</div>*/}
             </>
         );
     }
